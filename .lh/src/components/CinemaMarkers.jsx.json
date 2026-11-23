@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/components/CinemaMarkers.jsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1795416662529,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1795416662529,
+            "name": "Commit-0",
+            "content": "import React from 'react';\nimport { useMemo } from \"react\";\nimport { useParams } from \"react-router-dom\";\nimport allCinemas from \"../data/cinemas\";\nimport { useMapContext } from './Map/context';\n\nconst CinemaMarkers = () => {\n  const { Marker } = useMapContext();\n  const params = useParams();\n  const cinemas = useMemo(() => {\n    if (params.franchiseId || params.countryCode) {\n      const { franchiseId, countryCode } = params;\n      return allCinemas.filter(cinema => {\n        return (\n          franchiseId === 'all-cinemas' ||\n          cinema.franchise === franchiseId\n        ) && cinema.countryCode === countryCode;\n      })\n    }\n\n    return allCinemas;\n  }, [params]);\n\n  return cinemas.map((cinema, idx) => {\n    return (\n      <Marker lat={cinema.lat} lon={cinema.lng} key={idx} />\n    )\n  })\n};\n\nexport default CinemaMarkers;"
+        }
+    ]
+}

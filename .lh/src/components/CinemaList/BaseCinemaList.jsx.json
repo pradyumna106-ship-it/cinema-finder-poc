@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/components/CinemaList/BaseCinemaList.jsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1795416555402,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1795416555402,
+            "name": "Commit-0",
+            "content": "import React from 'react';\nimport { List, Divider } from \"@mui/material\";\nimport CinemaListItem from './CinemaListItem';\n\nconst CinemaListAside = ({ cinemas, Header = null }) => {\n  return (\n    <List sx={{ maxHeight: 'calc(100vh - 112px)', overflowY: 'auto' }}>\n      <Header {...{ cinemas }} />\n      {Header && <Divider />}\n      {/* NOTE: potential future feature of adding frontend sorting */}\n      {/* NOTE: this currently doesn't handle the case of cinemas array being empty\n                (poential caused by manually manipulated url arguments) */}\n      {cinemas.map((cinema, idx) => (\n        <CinemaListItem {...cinema} key={idx} />\n      ))}\n    </List>\n  )\n}\nexport default CinemaListAside;"
+        }
+    ]
+}

@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/components/Map/index.jsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1795416622506,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1795416622506,
+            "name": "Commit-0",
+            "content": "import React from 'react';\nimport loadable from '@loadable/component';\nimport createPersistedState from 'use-persisted-state';\n\nconst usePersistedMapTypeState = createPersistedState('app.mapType');\n\nconst Maps = {\n  maplibre: loadable(() => import('./MaplibreMap')),\n  leaflet: loadable(() => import('./LeafletMap')),\n}\n\nexport const mapTypes = Object.keys(Maps);\nexport const useMapType = () => {\n  const [mapType, setMapType] = usePersistedMapTypeState(mapTypes[0]);\n  return [mapType, setMapType];\n}\n\nconst Map = (props) => {\n  // Returns either a MaplibreMap or a LeafletMap component depending on \n  // what has been set via the settings cog in the nav (default: maplibre)\n  const [mapType] = useMapType();\n  const Component = Maps[mapType];\n  return <Component {...props} />\n}\nexport default Map;"
+        }
+    ]
+}

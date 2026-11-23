@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/components/CinemaList/FranchiseHeader.jsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1795416462067,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1795416462067,
+            "name": "Commit-0",
+            "content": "import React from 'react';\nimport { IconButton, ListSubheader, Typography, Stack } from \"@mui/material\";\nimport { GiAustralia, GiFern } from \"react-icons/gi\";\nimport { MdOutlineArrowBack } from 'react-icons/md';\nimport { Link as RouterLink } from 'react-router-dom';\nimport { useParams } from \"react-router-dom\";\nimport franchises from \"../../data/franchises\";\n\nconst FranchiseHeader = () => {\n  const { franchiseId, countryCode } = useParams();\n  const franchise = franchises[franchiseId];\n\n  return (\n    <ListSubheader sx={{ pb: 2 }}>\n      <Stack direction=\"row\" justifyContent=\"space-between\">\n        <IconButton component={RouterLink} to=\"/\">\n          <MdOutlineArrowBack />\n        </IconButton>\n        {franchise?.logoUrl ? (<div style={{ height: '3em' }}>\n          <img src={franchise?.logoUrl} alt={`${franchise.identifier} logo`} height=\"100%\" />\n        </div>) : (\n          <Typography sx={{ alignSelf: 'center' }}>\n            {franchiseId === 'all-cinemas' ? 'All Cinemas' : (franchise?.name || franchise?.identifier || franchise?.id)}\n          </Typography>\n        )}\n        <IconButton disabled>\n          {countryCode === 'au' && <GiAustralia />}\n          {countryCode === 'nz' && <GiFern />}\n        </IconButton>\n      </Stack>\n    </ListSubheader>\n  )\n}\nexport default FranchiseHeader;"
+        }
+    ]
+}

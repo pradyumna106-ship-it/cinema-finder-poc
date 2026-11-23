@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/utils/lastLocation.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1795451979843,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1795451979843,
+            "name": "Commit-0",
+            "content": "const KEY = 'app.lastLocation';\r\n\r\nexport const saveLastLocation = ({ lat, lng }) => {\r\n  try {\r\n    localStorage.setItem(KEY, JSON.stringify({ lat, lng, savedAt: Date.now() }));\r\n  } catch (e) {\r\n    /* storage may be blocked; ignore */\r\n  }\r\n};\r\n\r\nexport const loadLastLocation = () => {\r\n  try {\r\n    const raw = localStorage.getItem(KEY);\r\n    if (!raw) return null;\r\n    const { lat, lng } = JSON.parse(raw);\r\n    return Number.isFinite(lat) && Number.isFinite(lng) ? { lat, lng } : null;\r\n  } catch (e) {\r\n    return null;\r\n  }\r\n};"
+        }
+    ]
+}

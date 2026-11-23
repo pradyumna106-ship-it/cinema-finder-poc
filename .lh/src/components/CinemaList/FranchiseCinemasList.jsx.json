@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/components/CinemaList/FranchiseCinemasList.jsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1795416544402,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1795416544402,
+            "name": "Commit-0",
+            "content": "import React from 'react';\nimport BaseCinemaList from \"./BaseCinemaList\";\nimport FranchiseHeader from \"./FranchiseHeader\";\nimport { useMemo } from \"react\";\nimport { useParams } from \"react-router-dom\";\nimport allCinemas from \"../../data/cinemas\";\n\nconst FranchiseCinemasList = () => {\n  const { franchiseId, countryCode } = useParams();\n  const filteredCinemas = useMemo(() => {\n    return allCinemas.filter(cinema => (\n      franchiseId === 'all-cinemas' ||\n      cinema.franchise === franchiseId\n    ) && cinema.countryCode === countryCode);\n  }, [franchiseId, countryCode])\n\n  return (\n    <BaseCinemaList cinemas={filteredCinemas} Header={FranchiseHeader} />\n  );\n};\nexport default FranchiseCinemasList;"
+        }
+    ]
+}

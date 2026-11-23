@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/components/MapTypeMenu.jsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1795416384067,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1795416384067,
+            "name": "Commit-0",
+            "content": "import React from 'react';\nimport { IconButton, Popover, Backdrop, FormControl, FormLabel, RadioGroup, FormControlLabel, Radio } from '@mui/material';\nimport { useRef, useState } from 'react';\nimport { MdSettings } from 'react-icons/md';\nimport { startCase } from 'lodash';\nimport { mapTypes, useMapType } from './Map';\n\nconst MapTypeMenu = () => {\n  const [open, setOpen] = useState(false);\n  const settingsButtonRef = useRef(null);\n\n  const [mapType, setMapType] = useMapType();\n\n  return (<>\n    <IconButton ref={settingsButtonRef} sx={{ ml: 'auto' }} color={open ? 'grey' : 'initial'} onClick={() => setOpen(true)}>\n      <MdSettings />\n    </IconButton>\n    <Backdrop\n      open={open}\n      sx={{ zIndex: 1000 }}\n    />\n    <Popover\n      open={open}\n      anchorEl={settingsButtonRef?.current}\n      onClose={() => setOpen(false)}\n      anchorOrigin={{\n        vertical: 'bottom',\n        horizontal: 'left',\n      }}\n    >\n      <FormControl sx={{ m: 2 }}>\n        <FormLabel>Active map library</FormLabel>\n        <RadioGroup value={mapType} onChange={(evt) => {\n          setMapType(evt.target.value);\n        }}>\n          {mapTypes.map((type) => (\n            <FormControlLabel key={type} value={type} control={<Radio />} label={startCase(type)} />\n          ))}\n        </RadioGroup>\n      </FormControl>\n    </Popover>\n  </>)\n}\nexport default MapTypeMenu;"
+        }
+    ]
+}

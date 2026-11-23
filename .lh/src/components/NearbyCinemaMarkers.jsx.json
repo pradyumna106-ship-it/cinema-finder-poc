@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/components/NearbyCinemaMarkers.jsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1795416331250,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1795416331250,
+            "name": "Commit-0",
+            "content": "import React from 'react';\nimport useNearbyCinemas from \"../data/nearbyCinemas\";\nimport { useMapContext } from './Map/context';\n\nconst NearbyCinemaMarkers = () => {\n  const { Marker } = useMapContext();\n  const { cinemas } = useNearbyCinemas();\n\n  return cinemas.map((cinema, idx) => {\n    return (\n      <Marker lat={cinema.lat} lon={cinema.lng} key={idx} />\n    )\n  })\n};\n\nexport default NearbyCinemaMarkers;"
+        }
+    ]
+}

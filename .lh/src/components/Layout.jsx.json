@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/components/Layout.jsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1795416673724,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1795416673724,
+            "name": "Commit-0",
+            "content": "import React from 'react';\nimport { Container, Grid } from '@mui/material';\nimport TopBar from \"./TopBar\";\n\nconst Layout = ({ children }) => (\n  <>\n    <TopBar />\n    <Container maxWidth=\"xl\" sx={{ mt: 2, height: 'calc(100vh - 96px)' }}>\n      <Grid container spacing={2} sx={{ height: '100%' }}>\n        {children}\n      </Grid>\n    </Container>\n  </>\n)\nexport default Layout;"
+        }
+    ]
+}

@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/components/SiteLogo.jsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1795416695061,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1795416695061,
+            "name": "Commit-0",
+            "content": "import React from 'react';\nimport { SvgIcon } from '@mui/material';\nimport { GiFilmProjector } from 'react-icons/gi';\n\n\n// Manually extract out viewBox and path from svg import\nconst splitSourceStrs = GiFilmProjector.toString().split(/[()]/);\nconst jsonStr = splitSourceStrs.filter(str => str[0] === '{' && str.slice(-1)[0] === '}')[0];\n// In production the json is minified to js (and stops being able to be parsed by JSON.parse)\nconst correctedJsonStr = jsonStr.replace(/(['\"])?([a-z0-9A-Z_]+)(['\"])?:/g, '\"$2\": ');\n\nconst jsxEl = JSON.parse(correctedJsonStr);\nconst viewBox = jsxEl.attr.viewBox;\nconst d = jsxEl.child[0].attr.d;\n\nconst SiteLogo = (props) => {\n  return (\n    <SvgIcon {...{ viewBox }} fontSize='large' sx={{ mr: 1 }} {...props}>\n      <path {...{ d }} />\n    </SvgIcon>\n  )\n}\nexport default SiteLogo;"
+        }
+    ]
+}

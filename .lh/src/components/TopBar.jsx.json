@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/components/TopBar.jsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1795416701942,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1795416701942,
+            "name": "Commit-0",
+            "content": "import React from 'react';\nimport { AppBar, Container, Toolbar, Typography } from '@mui/material';\nimport { Link as RouterLink } from 'react-router-dom';\nimport SiteLogo from './SiteLogo';\nimport MapTypeMenu from './MapTypeMenu';\n\nconst TopBar = () => (\n  <AppBar position=\"static\">\n    <Container maxWidth=\"xl\">\n      <Toolbar disableGutters>\n        <SiteLogo />\n        <Typography\n          variant=\"h6\"\n          noWrap\n          component={RouterLink}\n          to=\"/\"\n          sx={{\n            fontFamily: 'monospace',\n            fontWeight: 700,\n            color: 'inherit',\n            textDecoration: 'none',\n          }}\n        >\n          Cinema Finder\n        </Typography>\n        <MapTypeMenu />\n      </Toolbar>\n    </Container>\n  </AppBar>\n);\nexport default TopBar;"
+        }
+    ]
+}

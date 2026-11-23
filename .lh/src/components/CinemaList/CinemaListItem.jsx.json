@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/components/CinemaList/CinemaListItem.jsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1795416475066,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1795416475066,
+            "name": "Commit-0",
+            "content": "import React from 'react';\nimport { Chip, IconButton, ListItem, ListItemText } from \"@mui/material\";\nimport { MdCall, MdOutlineLocationOn } from 'react-icons/md';\nimport { format } from 'd3-format';\n\nconst dispatchMapSnapTo = (lat, lng) => {\n  // This will dispatch the `map.snapTo` event which will trigger a listener on the\n  // respective active map component to zoom to the latitude and longitude passed\n  console.log('triggering `map.snapTo` event with args: ', `lat: ${lat}, lng: ${lng}`)\n  dispatchEvent(new CustomEvent('map.snapTo', { detail: { lat, lng } }))\n}\n\nconst CinemaListItem = ({ name, lat, lng, phoneNumber, distance, ...otherProps }) => {\n  return (\n    <ListItem>\n      <ListItemText>\n        {name}\n        {distance && (<Chip size=\"small\" sx={{ ml: 1 }} label={`${format(',.1f')(distance)} km`} />)}\n      </ListItemText>\n      {\n        phoneNumber && (\n          <IconButton component='a' href={`tel:${phoneNumber}`}>\n            <MdCall />\n          </IconButton>\n        )\n      }\n      <IconButton onClick={() => dispatchMapSnapTo(lat, lng)}>\n        <MdOutlineLocationOn />\n      </IconButton>\n    </ListItem>\n  );\n};\nexport default CinemaListItem;"
+        }
+    ]
+}

@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/App.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1795416504939,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1795416504939,
+            "name": "Commit-0",
+            "content": "import React from 'react';\nimport { Grid, Paper, Typography } from \"@mui/material\";\nimport Layout from \"./components/Layout\";\nimport Map from \"./components/Map\";\nimport AsideIndex from \"./components/AsideIndex\";\nimport {\n  FranchiseCinemasList,\n  NearbyCinemasList\n} from \"./components/CinemaList\";\nimport { Switch, Route } from \"react-router-dom\";\nimport Provider from \"./components/Provider\";\nimport loadable from \"@loadable/component\";\n\n// Minimal react component for page not found aside.\n// Could be extracted to a different file if it was more complicated.\nconst NotFound = () => (\n  <Typography variant=\"h6\">404, Page Not Found!</Typography>\n);\n\n// Use @loadable/component to dynamic import the CinemaMarkers & NearbyCinemaMarkes\n// this will make the application utilise code splitting to decrease the total initial code file size.\nconst CinemaMarkers = loadable(() => import(\"./components/CinemaMarkers\"));\nconst NearbyCinemaMarkers = loadable(() =>\n  import(\"./components/NearbyCinemaMarkers\")\n);\n// This isn't required for the CinemasLists as they already loadable components [in ./components/CinemaList/index.jsx]\n\n// Our root component containing our map and info panel\nconst App = () => (\n  <Provider>\n    <Layout>\n      <Grid item xs={12} md={8} sx={{ minHeight: 400 }}>\n        <Map>\n          <Switch>\n            <Route exact path=\"/\">\n              <CinemaMarkers />\n            </Route>\n            <Route path=\"/nearby\" component={NearbyCinemaMarkers} />\n            <Route\n              path=\"/:franchiseId/:countryCode\"\n              component={CinemaMarkers}\n            />\n          </Switch>\n        </Map>\n      </Grid>\n      <Grid item xs={12} md={4}>\n        <Paper sx={{ p: 1 }}>\n          <Switch>\n            <Route exact path=\"/\" component={AsideIndex} />\n            <Route path=\"/nearby\" component={NearbyCinemasList} />\n            <Route\n              path=\"/:franchiseId/:countryCode\"\n              component={FranchiseCinemasList}\n            />\n            <Route path=\"*\" component={NotFound} />\n          </Switch>\n        </Paper>\n      </Grid>\n    </Layout>\n  </Provider>\n);\n\nexport default App;\n"
+        }
+    ]
+}
